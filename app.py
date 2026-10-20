@@ -1,7 +1,5 @@
 import os
-import sys
 import glob
-import pickle
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 from pypdf import PdfReader
