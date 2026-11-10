@@ -19,10 +19,10 @@ Point DocToKB at a folder of PDFs. It chunks every document, embeds the
 chunks locally with `sentence-transformers`, and answers natural-language
 queries against them.
 
-- **Fully offline** — everything runs on your machine
-- **Local embeddings** — `all-MiniLM-L6-v2`, downloaded once on first run
-- **Semantic search** — query in plain language, get ranked passages
-- **Lightweight GUI** — Tkinter, no browser required
+- **Fully offline**  -  everything runs on your machine
+- **Local embeddings**  -  `all-MiniLM-L6-v2`, downloaded once on first run
+- **Semantic search**  -  query in plain language, get ranked passages
+- **Lightweight GUI**  -  Tkinter, no browser required
 
 ## Requirements
 
@@ -46,9 +46,9 @@ python app.py
 Or double-click `DocToKB.bat` on the Desktop.
 
 1. **Choose PDF Folder**
-2. **Index Folder** — extracts chunks and builds embeddings (first run downloads
+2. **Index Folder**  -  extracts chunks and builds embeddings (first run downloads
    the model, so it takes a moment)
-3. Type a natural-language query and click **Search** — the top 5 matches are
+3. Type a natural-language query and click **Search**  -  the top 5 matches are
    shown with filename, similarity score and snippet
 
 ## Notes
@@ -69,12 +69,12 @@ The `build/` and `dist/` directories are intentionally not committed.
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT  -  see [LICENSE](LICENSE).
 
 ---
 
 ## Credits
 
-Built by **Conrad CJ Wilson** — [GitHub](https://github.com/cjps4linux-creator) · [LinkedIn](https://linkedin.com/in/conradcjwilson)
+Built by **Conrad CJ Wilson**  -  [GitHub](https://github.com/cjps4linux-creator) · [LinkedIn](https://linkedin.com/in/conradcjwilson)
 
 `conradcjwilson0@gmail.com`
