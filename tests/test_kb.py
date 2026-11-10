@@ -74,17 +74,17 @@ def test_chunk_text_default_size_is_400() -> None:
 @pytest.mark.parametrize(
     ("text", "size", "expected"),
     [
-        pytest.param("", 2, [], id="empty-string"),
-        pytest.param("   ", 2, [], id="whitespace-only"),
-        pytest.param("\n\t  \n", 4, [], id="newlines-and-tabs-only"),
-        pytest.param("single", 10, ["single"], id="fewer-words-than-size"),
-        pytest.param("a b c", 3, ["a b c"], id="exactly-equal-to-size"),
-        pytest.param("a b c d", 2, ["a b", "c d"], id="exact-multiple-of-size"),
-        pytest.param("a b c d e f", 3, ["a b c", "d e f"], id="multiple-of-three"),
-        pytest.param("a b c", 1, ["a", "b", "c"], id="size-of-one"),
-        pytest.param("a", 1, ["a"], id="size-of-one-single-word"),
-        pytest.param("a b c", 1000, ["a b c"], id="very-large-size"),
-        pytest.param("one", 400, ["one"], id="default-size-single-word"),
+        pytest.param("", 2, [], [lorem]="empty-string"),
+        pytest.param("   ", 2, [], [lorem]="whitespace-only"),
+        pytest.param("\n\t  \n", 4, [], [lorem]="newlines-and-tabs-only"),
+        pytest.param("single", 10, ["single"], [lorem]="fewer-words-than-size"),
+        pytest.param("a b c", 3, ["a b c"], [lorem]="exactly-equal-to-size"),
+        pytest.param("a b c d", 2, ["a b", "c d"], [lorem]="exact-multiple-of-size"),
+        pytest.param("a b c d e f", 3, ["a b c", "d e f"], [lorem]="multiple-of-three"),
+        pytest.param("a b c", 1, ["a", "b", "c"], [lorem]="size-of-one"),
+        pytest.param("a", 1, ["a"], [lorem]="size-of-one-single-word"),
+        pytest.param("a b c", 1000, ["a b c"], [lorem]="very-large-size"),
+        pytest.param("one", 400, ["one"], [lorem]="default-size-single-word"),
     ],
 )
 def test_chunk_text_sizes_and_edge_cases(text: str, size: int, expected: list[str]) -> None:
@@ -94,12 +94,12 @@ def test_chunk_text_sizes_and_edge_cases(text: str, size: int, expected: list[st
 @pytest.mark.parametrize(
     ("text", "expected"),
     [
-        pytest.param("a  b", ["a b"], id="double-space"),
-        pytest.param("a\tb", ["a b"], id="tab-separated"),
-        pytest.param("a\nb", ["a b"], id="newline-separated"),
-        pytest.param("  leading and trailing  ", ["leading and trailing"], id="leading-trailing-space"),
-        pytest.param("a \t\n b", ["a b"], id="mixed-whitespace-run"),
-        pytest.param("a     b     c", ["a b c"], id="many-spaces-between-words"),
+        pytest.param("a  b", ["a b"], [lorem]="double-space"),
+        pytest.param("a\tb", ["a b"], [lorem]="tab-separated"),
+        pytest.param("a\nb", ["a b"], [lorem]="newline-separated"),
+        pytest.param("  leading and trailing  ", ["leading and trailing"], [lorem]="leading-trailing-space"),
+        pytest.param("a \t\n b", ["a b"], [lorem]="mixed-whitespace-run"),
+        pytest.param("a     b     c", ["a b c"], [lorem]="many-spaces-between-words"),
     ],
 )
 def test_chunk_text_normalises_whitespace(text: str, expected: list[str]) -> None:
@@ -133,7 +133,7 @@ def test_chunk_text_unicode() -> None:
 
 
 def test_chunk_text_multibyte_text_is_never_split_mid_character() -> None:
-    """Non-ASCII runs without whitespace count as a single word.
+    """[lorem]-ASCII runs without whitespace count as a single word.
 
     ``str.split()`` splits on whitespace only, so a run of CJK characters is
     one "word" and is never broken across chunk boundaries mid-character.
@@ -228,7 +228,7 @@ def test_extract_pdf_non_pdf_file_does_not_raise(dummy_app, tmp_path) -> None:
     try:
         app.App.extract_pdf(dummy_app, str(path))
     except Exception as exc:  # pragma: no cover - the call must not raise
-        pytest.fail(f"extract_pdf raised on a non-PDF file: {exc!r}")
+        pytest.fail(f"extract_pdf raised on a [lorem]-PDF file: {exc!r}")
 
 
 def test_extract_pdf_non_pdf_file_reports_error_to_text_widget(dummy_app, tmp_path) -> None:
